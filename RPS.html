@@ -7,29 +7,60 @@
     <title>Document</title>
 </head>
 <body>
+    <img src="https://am22.mediaite.com/tms/cnt/uploads/2021/02/shrek.jpg" alt="shronk" length="1500px" height="700px" >
     <script>
-       function computerPlay () {
-           let CompNum = Math.floor(Math.random()*3);
-           console.log(CompNum);
-           if (CompNum == 1){
-            //    console.log ("rock");
-               return("Rock");
-           }else if (CompNum == 2){
-            //    console.log("paper");
-               return("Paper");
-           }else {
-            //    console.log("scissors");
-               return("Scissors");
+        
+       function computerPlay(){
+           let compNum = Math.ceil(Math.random()*3);
+           if (compNum == 1){
+               return "ROCK";
+           }else if (compNum == 2){
+               return "PAPER";
+           }else (compNum == 3); {
+               return "SCISSORS";
            }
        }
-// computerPlay();
-let computerSelection 
-function playerSelection(playerSelection, computerSelection){
-    console.log(playerSelection);
-    console.log(computerSelection);
-}
-playerSelection("Rock",computerPlay());
+       
+       function round(playerSelection,compSelection){
+           if (playerSelection == compSelection){
+                alert (`Tied game: You chose ${playerSelection}, the computer chose ${compSelection}`);
+               return 0;
+           }else if (playerSelection == "ROCK" && compSelection == "PAPER"){
+                alert(`You lose. You chose ${playerSelection}, the computer chose ${compSelection}`);
+                return -1;
+           }else if (playerSelection == "ROCK" && compSelection == "SCISSORS"){
+                alert(`You win! You chose ${playerSelection}, the computer chose ${compSelection}`);
+                return 1;
+           }else if (playerSelection == "PAPER" && compSelection == "SCISSORS"){
+                alert(`You lose. You chose ${playerSelection}, the computer chose ${compSelection}`);
+                return -1;
+            }else if (playerSelection == "PAPER" && compSelection == "ROCK"){
+                alert(`You win! You chose ${playerSelection}, the computer chose ${compSelection}`);
+                return 1;
+            }else if (playerSelection == "SCISSORS" && compSelection == "PAPER"){
+                alert(`You win! You chose ${playerSelection}, the computer chose ${compSelection}`);
+                return 1;
+            }else (playerSelection == "SCISSORS" && compSelection == "ROCK"); {
+                alert(`You lose. You chose ${playerSelection}, the computer chose ${compSelection}`);
+                return -1;
+            }
+       }
+       function gamePlay(){
+           let score=0;
 
+           alert(`Round 1: score:${score}`);
+           let  compSelection = computerPlay();
+           let  playerSelection = prompt("Choose your fate: Rock, Paper, or Scissors?").toUpperCase();
+           score += round(playerSelection,compSelection);
+
+           alert(`Round 2: score:${score}`);
+           compSelection = computerPlay();
+           playerSelection = prompt("Choose your fate: Rock, Paper, or Scissors?").toUpperCase();
+           score += round(playerSelection,compSelection);
+
+           alert(`Final Score:${score}`);
+       }
+       gamePlay();
     </script>
 </body>
 </html>
